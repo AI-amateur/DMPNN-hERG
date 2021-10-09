@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: chemprop
+Version: 0.0.1
+Summary: Molecular Property Prediction with Message Passing Neural Networks
+Home-page: https://github.com/swansonk14/chemprop
+Author: Kyle Swanson, Kevin Yang, Wengong Jin
+Author-email: swansonk@mit.edu, yangk@mit.edu, wengong@csail.mit.edu
+License: MIT
+Description: UNKNOWN
+Keywords: chemistry,machine learning,property prediction,message passing neural network
+Platform: UNKNOWN

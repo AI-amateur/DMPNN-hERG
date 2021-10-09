@@ -1,0 +1,80 @@
+1. used Siramshetty's hERG Dataset 
+dataset reference: Critical Assessment of Artificial Intelligence Methods for Prediction of hERG Channel Inhibition in the "Big Data" Era
+DOI£º10.1021/acs.jcim.0c00884
+
+Training: (pos: 2,164), (neg: 5,990), total: 8154
+Validation:  (pos: 53), (neg: 786), total: 839
+FDA-1: (pos: 15), (neg: 162), total: 177
+
+2. moe206 Descriptor file
+
+validation_set_moe206.csv  is the moe206 descriptor for validation_set.csv
+train_set_moe206.csv  is the moe206 descriptor for training_set.csv
+fda_drugs_set_moe206.csv  is the moe206 descriptor for fda_drugs_set_1uM.csv
+
+3. Predict probability result
+
+1). 
+file P_val_moe206_rand0.csv is the prediction result for test dataset by the D-MPNN+moe206 model which was trained by training_set.csv dataset and feature file train_set_moe206.csv in first run of  the 5 fold cross-validation
+
+P_val_moe206_rand1.csv, P_val_moe206_rand2.csv,P_val_moe206_rand3.csv and P_val_moe206_rand4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+file P_val_no_fp0.csv is the prediction result for test dataset by the D-MPNN model without additional descriptor which was trained by training_set.csv dataset in first run of  the 5 fold cross-validation
+
+P_val_no_fp1.csv, P_val_no_fp2.csv, P_val_no_fp3.csv and P_val_no_fp4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+3). 
+file P_fda_moe206_rand0.csv is the prediction result for test dataset by the D-MPNN+moe206 model which was trained by training_set.csv dataset and feature file train_set_moe206.csv in first run of  the 5 fold cross-validation
+
+P_fda_moe206_rand1.csv, P_fda_moe206_rand2.csv,P_fda_moe206_rand3.csv and P_fda_moe206_rand4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+4). 
+file P_fda_no_fp0.csv is the prediction result for test dataset by the D-MPNN model without additional descriptor which was trained by training_set.csv dataset in first run of  the 5 fold cross-validation
+
+P_fda_no_fp1.csv, P_fda_no_fp2.csv, P_fda_no_fp3.csv and P_fda_no_fp4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+4.  Results of evaluting performance
+
+1)
+file eva_validation_set_P_val_moe206_rand0.csv is results of evaluting performance by the D-MPNN+moe206 model which was trained by validation_set.csv dataset in first run of  the 5 fold cross-validation
+
+eva_validation_set_P_val_moe206_rand1.csv, eva_validation_set_P_val_moe206_rand2.csv, eva_validation_set_P_val_moe206_rand3.csv and eva_validation_set_P_val_moe206_rand4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2)
+file eva_validation_set_P_val_no_fp0.csv is results of evaluting performance by the D-MPNN model without additional descriptor which was trained by validation_set.csv dataset in first run of  the 5 fold cross-validation
+
+eva_validation_set_P_val_no_fp1.csv, eva_validation_set_P_val_no_fp2.csv, eva_validation_set_P_val_no_fp3.csv and eva_validation_set_P_val_no_fp4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+3)
+SVM+FCFP model achieves SE of 0.74and SP of 0.86, values of AUC-ROC and ACC can NOT be found in the original literature
+D-MPNN+moe206 model achieves AUC-ROC of 0.864¡À0.021, SE of 0.808¡À0.077, SP of 0.798¡À0.039 and ACC of 0.798¡À0.033
+D-MPNN model achieves AUC-ROC of 0.819¡À0.012, SE of 0.638¡À0.065, SP of 0.844¡À0.037 and ACC of 0.831¡À0.031
+
+4)
+file eva_fda_drugs_set_1uM_P_fda_moe206_rand0.csv is results of evaluting performance by the D-MPNN+moe206 model which was trained by fda_drugs_set_1uM.csv dataset in first run of  the 5 fold cross-validation
+
+eva_fda_drugs_set_1uM_P_fda_moe206_rand1.csv, eva_fda_drugs_set_1uM_P_fda_moe206_rand2.csv, eva_fda_drugs_set_1uM_P_fda_moe206_rand3.csv and eva_fda_drugs_set_1uM_P_fda_moe206_rand4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+5)
+file eva_fda_drugs_set_1uM_P_fda_no_fp0.csv is results of evaluting performance by the D-MPNN model without additional descriptor which was trained by fda_drugs_set_1uM.csv dataset in first run of  the 5 fold cross-validation
+
+eva_fda_drugs_set_1uM_P_fda_no_fp1.csv, eva_fda_drugs_set_1uM_P_fda_no_fp2.csv, eva_fda_drugs_set_1uM_P_fda_no_fp3.csv and eva_fda_drugs_set_1uM_P_fda_no_fp4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+6)
+SVM+FCFP model achieves AUC-ROC of 0.79, SE of 0.71 and SP of 0.78, value of ACC can NOT be found in the original literature
+D-MPNN+moe206 model achieves AUC-ROC of 0.882¡À0.013, SE of 0.613¡À0.110, SP of 0.856¡À0.023 and ACC of 0.835¡À0.018
+D-MPNN model achieves AUC-ROC of 0.813¡À0.032, SE of 0.413¡À0.099, SP of 0.884¡À0.019 and ACC of 0.844¡À0.013
+
+
+5. Script for Repeat the result
+run the following command:
+
+cd Table1_entry2_3
+source activate chemprop
+bash Script_for_Reproduce_result_entry2_3.sh
+
+## there is also an example jupyter notebook file (ipynb) in example_notebook fold
+
+
+

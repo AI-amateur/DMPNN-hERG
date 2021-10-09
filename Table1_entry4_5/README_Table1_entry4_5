@@ -1,0 +1,79 @@
+1. used Hou's hERG Dataset 
+dataset reference: ADMET Evaluation in Drug Discovery. 16. Predicting hERG Blockers by Combining Multiple Pharmacophores and Machine Learning Approaches
+DOI£º10.1021/acs.molpharmaceut.6b00471
+
+Training I: (pos: 352), (neg: 40), total: 392
+Training II: (pos: 352), (neg: 40), total: 392
+Test I:  (pos: 175), (neg: 20), total: 195
+Test II:  (pos: 175), (neg: 20), total: 195
+
+2. moe206 Descriptor file
+
+I_test_moe206.csv  is the moe206 descriptor for I_test.csv
+I_train_moe206.csv  is the moe206 descriptor for I_train.csv
+II_test_moe206.csv  is the moe206 descriptor for II_test.csv
+II_train_moe206.csv  is the moe206 descriptor for II_train.csv
+
+3. Predict probability result
+
+1). 
+file P_I_test_moe2060.csv is the prediction result for test dataset by the D-MPNN+moe206 model which was trained by I_train.csv dataset and feature file I_train_moe206.csv in first run of  the 5 fold cross-validation
+
+P_I_test_moe2061.csv, P_I_test_moe2062.csv,P_I_test_moe2063.csv and P_I_test_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+file P_I_test_noFP0.csv is the prediction result for test dataset by the D-MPNN model without additional descriptor which was trained by I_train.csv dataset in first run of  the 5 fold cross-validation
+
+P_I_test_noFP1.csv, P_I_test_noFP2.csv, P_I_test_noFP3.csv and P_I_test_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+3). 
+file P_II_test_moe2060.csv is the prediction result for test dataset by the D-MPNN+moe206 model which was trained by II_train.csv dataset and feature file II_train_moe206.csv in first run of  the 5 fold cross-validation
+
+P_II_test_moe2061.csv, P_II_test_moe2062.csv, P_II_test_moe2063.csv and P_II_test_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+4). 
+file P_II_test_noFP0.csv is the prediction result for test dataset by the D-MPNN model without additional descriptor which was trained by II_train.csv dataset in first run of  the 5 fold cross-validation
+
+P_II_test_noFP1.csv, P_II_test_noFP2.csv, P_II_test_noFP3.csv and P_II_test_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+4.  Results of evaluting performance
+
+1)
+file eva_I_test_P_I_test_moe2060.csv is results of evaluting performance by the D-MPNN+moe206 model which was trained by I_test.csv dataset in first run of  the 5 fold cross-validation
+
+eva_I_test_P_I_test_moe2061.csv, eva_I_test_P_I_test_moe2062.csv, eva_I_test_P_I_test_moe2063.csv and eva_I_test_P_I_test_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2)
+file eva_I_test_P_I_test_noFP0.csv is results of evaluting performance by the D-MPNN model without additional descriptor which was trained by I_test.csv dataset in first run of  the 5 fold cross-validation
+
+eva_I_test_P_I_test_noFP1.csv, eva_I_test_P_I_test_noFP2.csv, eva_I_test_P_I_test_noFP3.csv and eva_I_test_P_I_test_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+3)
+SVM+FCFP model achieves AUC-ROC of 0.842, SE of 0.907, SP of 0.652, and ACC of 0.821
+D-MPNN+moe206 model achieves AUC-ROC of 0.871¡À0.010, SE of 0.916¡À0.014, SP of 0.667¡À0.049 and ACC of 0.832¡À0.010
+D-MPNN model achieves AUC-ROC of 0.776¡À0.026, SE of 0.907¡À0.031, SP of 0.539¡À0.065 and ACC of 0.783¡À0.021
+
+4)
+file eva_II_test_P_II_test_moe2060.csv is results of evaluting performance by the D-MPNN+moe206 model which was trained by II_test.csv dataset in first run of  the 5 fold cross-validation
+
+eva_II_test_P_II_test_moe2061.csv, eva_II_test_P_II_test_moe2062.csv, eva_II_test_P_II_test_moe2063.csv and eva_II_test_P_II_test_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+5)
+file eva_II_test_P_II_test_noFP0.csv is results of evaluting performance by the D-MPNN model without additional descriptor which was trained by II_test.csv dataset in first run of  the 5 fold cross-validation
+
+eva_II_test_P_II_test_noFP1.csv, eva_II_test_P_II_test_noFP2.csv, eva_II_test_P_II_test_noFP3.csv and eva_II_test_P_II_test_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+6)
+SVM+FCFP model achieves AUC-ROC of 0.839, SE of 0.850 and SP of 0.745 and ACC of 0.821
+D-MPNN+moe206 model achieves AUC-ROC of 0.876¡À0.015, SE of 0.890¡À0.025, SP of 0.676¡À0.039 and ACC of 0.830¡À0.010
+D-MPNN model achieves AUC-ROC of 0.806¡À0.010, SE of 0.909¡À0.037, SP of 0.553¡À0.040 and ACC of 0.808¡À0.018
+
+5. Script for Repeat the result
+cd Table1_entry4_5
+source activate chemprop
+bash Script_for_Reproduce_result_entry4_5
+
+# there is also an example jupyter notebook file (ipynb) in example_notebook fold
+
+
+

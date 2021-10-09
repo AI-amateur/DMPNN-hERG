@@ -1,0 +1,39 @@
+1. Karim's CardioTox Dataset 
+dataset reference£ºCardioTox net: a robust predictor for hERG channel blockade based on deep learning meta-feature ensembles
+DOI£º10.1186/s13321-021-00541-z
+https://github.com/Abdulk084/CardioTox
+
+2. moe206 Descriptor file
+train_validation_cardio_tox_data.csv is the training dataset, train_validation_cardio_tox_data_moe206.csv is the corresponding moe206 descriptor file.
+external_test_set_pos.csv is Test set-I dataset, external_test_set_pos_moe206.csv is the corresponding moe206 descriptor file.
+external_test_set_neg.csv is Test set-II dataset, external_test_set_neg_moe206.csv is the corresponding moe206 descriptor file.
+external_test_set_new.csv is Test set-III dataset, external_test_set_new_moe206.csv is the corresponding moe206 descriptor file.
+
+3. Predict probability result
+
+1). 
+file P_pos_moe2060.csv is the prediction result for external_test_set_pos.csv by the D-MPNN+moe206 model which was trained by train_validation_cardio_tox_data.csv dataset and feature file train_validation_cardio_tox_data_moe206.csv in first run of  the 5 fold cross-validation
+
+P_pos_moe2061.csv, P_pos_moe2062.csv, P_pos_moe2063.csv and P_pos_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+P_neg_moe206*.csv files are the same method as above for external_test_set_neg.csv
+P_new_moe206*.csv files are the same method as above for external_test_set_new.csv
+
+4.  Results of evaluting performance
+
+1)
+file eva_external_test_set_pos_P_pos_moe2060.csv is results of evaluting external_test_set_pos.csv performance by the D-MPNN+moe206 model which was trained by train_validation_cardio_tox_data.csv dataset in first run of  the 5 fold cross-validation
+eva_external_test_set_pos_P_pos_moe2061.csv, eva_external_test_set_pos_P_pos_moe2062.csv, eva_external_test_set_pos_P_pos_moe2063.csv and eva_external_test_set_pos_P_pos_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+
+2)
+eva_external_test_set_neg_P_neg_moe206*.csv files are the same method as above for external_test_set_neg.csv
+eva_external_test_set_new_P_new_moe206*.csv files are the same method as above for external_test_set_new.csv
+
+
+4. Script for Repeat the result, run following command:
+cd Table_1_entry_6
+source activate chemprop
+bash Script_for_Reproduce_result_Table2.sh in example_notebook fold
+

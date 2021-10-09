@@ -1,0 +1,59 @@
+1. used Ogura's hERG Dataset 
+dataset reference: Support Vector Machine model for hERG inhibitory activities based on the integrated hERG database using descriptor selection by NSGA-II
+DOI£º10.1038/s41598-019-47536-3
+
+Training: (pos: 6,923), (neg: 196,918), total: 203,941
+Test:  (pos: 2,966), (neg: 84,395), total: 87,361
+
+2. moe206 Descriptor file
+note: two file compressed zip file becasue its relative big size.
+unzip using following commands:
+
+
+unzip test87366_moe206.csv.zip
+this will give  the orginal the  test87366_moe206.csv
+
+
+zip -F train203853_moe206.csv.zip --out single-archive.zip
+unzip single-archive.zip
+this will give the orginal the train203853_moe206.csv
+
+test87366_moe206.csv  is the moe206 descriptor for test87366.csv
+train203853_moe206.csv  is the moe206 descriptor for train203853.csv
+
+3. Predict probability result
+
+1). 
+file P_test87366_moe2060.csv is the prediction result for test dataset by the D-MPNN+moe206 model which was trained by train203853.csv dataset and feature file train203853_moe206.csv in first run of  the 5 fold cross-validation
+
+P_test87366_moe2061.csv, P_test87366_moe2062.csv, P_test87366_moe2063.csv and P_test87366_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+file P_test87366_noFP0.csv is the prediction result for test dataset by the D-MPNN model without additional descriptor which was trained by train203853.csv dataset in first run of  the 5 fold cross-validation
+
+P_test87366_noFP1.csv, P_test87366_noFP2.csv, P_test87366_noFP3.csv and P_test87366_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+
+4.  Results of evaluting performance
+
+1)
+file eva_test87366_P_test87366_moe2060.csv is results of evaluting performance by the D-MPNN+moe206 model which was trained by test87366.csv dataset in first run of  the 5 fold cross-validation
+
+eva_test87366_P_test87366_moe2061.csv, eva_test87366_P_test87366_moe2062.csv, eva_test87366_P_test87366_moe2063.csv and eva_test87366_P_test87366_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+
+2)
+file eva_test87366_P_test87366_noFP0.csv is results of evaluting performance by the D-MPNN model without additional descriptor which was trained by test87366.csv dataset in first run of  the 5 fold cross-validation
+
+eva_test87366_P_test87366_noFP1.csv, eva_test87366_P_test87366_noFP2.csv, eva_test87366_P_test87366_noFP3.csv and eva_test87366_P_test87366_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+3)
+SVM+FCFP model achieves AUC-ROC of 0.962, SE of 0.670, SP of 0.995 and ACC of 0.984
+D-MPNN+moe206 model achieves AUC-ROC of 0.968¡À0.001, SE of 0.656¡À0.033, SP of 0.994¡À0.001 and ACC of 0.983¡À0.001
+D-MPNN model achieves AUC-ROC of 0.954¡À0.001, SE of 0.627¡À0.038, SP of 0.992¡À0.001 and ACC of 0.979¡À0.000
+
+5. Script for Repeat the result, run following command:
+cd Table_1_entry_6
+source activate chemprop
+bash Script_for_Reproduce_result_entry6.sh in example_notebook fold
+

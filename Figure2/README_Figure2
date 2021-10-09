@@ -1,0 +1,45 @@
+1. used Cai's hERG Dataset 
+dataset reference paper£ºDeep Learning-Based Prediction of Drug-Induced Cardiotoxicity
+DOI£º10.1021/acs.jcim.8b00769
+
+Dataset: (pos: 4,355), (neg: 3,534), total: 7,889 compounds
+
+2. moe206 Descriptor file
+dataset file is Cai_TableS3_fixed.csv which was retrieved from about paper in the supporting information Table S3 with some smiles structured errors be fixed
+Cai_TableS3_moe206.csv is the moe206 descriptor for Cai_TableS3_fixed.csv
+
+3. Results of five-fold cross-validation under the random split mode
+1). 
+Folder fold_0 in folder S3_moe206_rand_check is the result for dataset by the D-MPNN+moe206 model which was trained by S3_fixed.csv dataset and feature file moe_206des.csv under the random split in first run of the 5 fold cross-validation
+fold_1, fold_2,fold_3 and fold_4 are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+Folder fold_0 in folder S3_no_fp_random_check is the result for dataset by the D-MPNN model without additional descriptor which was trained by S3_fixed.csv dataset under the random split in first run of the 5 fold cross-validation
+fold_1, fold_2, fold_3 and fold_4 are the results of rest 4 run in the 5 fold cross-validation
+
+3)
+D-MPNN+moe206 model achieves AUC-ROC of 0.956¡À0.005
+D-MPNN model achieves AUC-ROC of 0.947¡À0.005
+this result can be found in the quiet.log file
+
+4. Results of five-fold cross-validation under the scaffold split mode
+1). 
+Folder fold_0 in folder S3_moe206_scaffold_balanced_check is the result for dataset by the D-MPNN+moe206 model which was trained by S3_fixed.csv dataset and feature file moe_206des.csv under the scaffold split in first run of the 5 fold cross-validation
+fold_1, fold_2,fold_3 and fold_4 are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+Folder fold_0 in folder S3_no_fp_scaffold_check is the result for dataset by the D-MPNN model without additional descriptor which was trained by S3_fixed.csv dataset under the scaffold split in first run of the 5 fold cross-validation
+fold_1, fold_2, fold_3 and fold_4 are the results of rest 4 run in the 5 fold cross-validation
+
+3)
+D-MPNN+moe206 model achieves AUC-ROC of 0.922¡À0.015
+D-MPNN model achieves AUC-ROC of 0.918¡À0.019
+this result can be found in the quiet.log file
+
+5. Script for Repeat the result
+run the following command:
+cd Figure2
+bash Script_for_reproduce_figure2.sh
+
+
+

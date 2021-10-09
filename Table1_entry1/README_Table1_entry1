@@ -1,0 +1,53 @@
+1. used Doddareddy's hERG Dataset 
+dataset reference: Prospective validation of a comprehensive in silico hERG model and its applications to commercial compound and drug databases
+DOI£º10.1002/cmdc.201000024
+
+D3 training: (pos: 1,004), (neg: 1,385), total: 2389
+D3 test:  (pos: 108), (neg: 147), total: 155
+
+2. moe206 Descriptor file
+
+test_108VS147_moe206.csv  is the moe206 descriptor for test_108VS147.csv
+train_1004VS1385_moe206.csv  is the moe206 descriptor for train_1004VS1385.csv
+
+3. Predict probability result
+
+1). 
+file P_test_moe2060.csv is the prediction result for test dataset by the D-MPNN+moe206 model which was trained by train_1004VS1385.csv dataset and feature file train_1004VS1385_moe206.csv in first run of  the 5 fold cross-validation
+
+P_test_moe2061.csv, P_test_moe2062.csv,P_test_moe2063.csv and P_test_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+2). 
+file P_test_noFP0.csv is the prediction result for test dataset by the D-MPNN model without additional descriptor which was trained by train_1004VS1385.csv dataset in first run of  the 5 fold cross-validation
+
+P_test_noFP1.csv, P_test_noFP2.csv, P_test_noFP3.csv and P_test_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+
+4.  Results of evaluting performance
+
+1)
+file eva_D3_test_108VS147_P_test_moe2060.csv is results of evaluting performance by the D-MPNN+moe206 model which was trained by test_108VS147.csv dataset in first run of  the 5 fold cross-validation
+
+eva_D3_test_108VS147_P_test_moe2061.csv, eva_D3_test_108VS147_P_test_moe2062.csv, eva_D3_test_108VS147_P_test_moe2063.csv and eva_D3_test_108VS147_P_test_moe2064.csv are the results of rest 4 run in the 5 fold cross-validation
+
+
+2)
+file eva_D3_test_108VS147_P_test_noFP0.csv is results of evaluting performance by the D-MPNN model without additional descriptor which was trained by test_108VS147.csv dataset in first run of  the 5 fold cross-validation
+
+eva_D3_test_108VS147_P_test_noFP1.csv, eva_D3_test_108VS147_P_test_noFP2.csv, eva_D3_test_108VS147_P_test_noFP3.csv and eva_D3_test_108VS147_P_test_noFP4.csv are the results of rest 4 run in the 5 fold cross-validation
+
+3)
+SVM+FCFP model achieves AUC-ROC of 0.93, SE of 0.81, SP of 0.89 and ACC of 0.86
+D-MPNN+moe206 model achieves AUC-ROC of 0.958¡À0.005, SE of 0.900¡À0.019, SP of 0.913¡À0.016 and ACC of 0.907¡À0.010
+D-MPNN model achieves AUC-ROC of 0.955¡À0.005, SE of 0.881¡À0.032, SP of 0.907¡À0.027 and ACC of 0.896¡À0.002
+
+5. Script for Repeat the result
+run the following command:
+
+cd Table1_entry1
+source activate chemprop
+sh Script_for_Reproduce_result_entry1.sh
+
+# there is also an example jupyter notebook file (ipynb) in example_notebook fold
+
+
